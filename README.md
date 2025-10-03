@@ -2,4 +2,4 @@
 
 A simple Pong game built with HTML, CSS, and JavaScript.  
 
-👉 [Play the game here!](https://your-username.github.io/pong-game/)
+👉 [Play the game here!](https://moussi0amine.github.io/pong-game/)
