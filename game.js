@@ -19,13 +19,53 @@ let isPlaying = false;
 let matchEnded = false;
 
 // Track mouse for player paddle
+
+// Mouse control
+
+// Utility: clamp paddle so it can reach the very bottom
+function clampPaddle() {
+  playerY = Math.max(0, Math.min(canvas.height - PADDLE_HEIGHT, playerY));
+  if (playerY + PADDLE_HEIGHT > canvas.height) {
+    playerY = canvas.height - PADDLE_HEIGHT;
+  }
+}
+
+// Mouse control
 canvas.addEventListener("mousemove", function (evt) {
   if (!isPlaying || matchEnded) return;
   const rect = canvas.getBoundingClientRect();
   const mouseY = evt.clientY - rect.top;
   playerY = mouseY - PADDLE_HEIGHT / 2;
-  // Clamp paddle position
-  playerY = Math.max(0, Math.min(canvas.height - PADDLE_HEIGHT, playerY));
+  clampPaddle();
+});
+
+// Touch control for mobile
+let lastTouchY = null;
+canvas.addEventListener("touchstart", function (evt) {
+  if (!isPlaying || matchEnded) return;
+  const rect = canvas.getBoundingClientRect();
+  const touch = evt.touches[0];
+  lastTouchY = touch.clientY - rect.top;
+  evt.preventDefault();
+});
+canvas.addEventListener("touchmove", function (evt) {
+  if (!isPlaying || matchEnded) return;
+  const rect = canvas.getBoundingClientRect();
+  const touch = evt.touches[0];
+  let touchY = touch.clientY - rect.top;
+  let sensitivity = 1.1;
+  if (lastTouchY !== null) {
+    let delta = (touchY - lastTouchY) * sensitivity;
+    playerY += delta;
+  } else {
+    playerY = touchY - PADDLE_HEIGHT / 2;
+  }
+  lastTouchY = touchY;
+  clampPaddle();
+  evt.preventDefault();
+});
+canvas.addEventListener("touchend", function () {
+  lastTouchY = null;
 });
 
 // Draw everything
