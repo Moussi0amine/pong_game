@@ -1,0 +1,143 @@
+
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  position: relative;
+}
+
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 24px auto 0 auto;
+  z-index: 2;
+}
+
+
+#controls button {
+  padding: 14px 38px;
+  font-size: 1.2rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(90deg, #f9c80e 0%, #f86624 100%);
+  color: #222;
+  font-weight: bold;
+  box-shadow: 0 4px 16px #f9c80e44, 0 2px 8px #0004;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#controls button:active {
+  transform: scale(0.97);
+}
+
+
+#controls button:hover {
+  background: linear-gradient(90deg, #f86624 0%, #f9c80e 100%);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px #f9c80e88, 0 4px 16px #0006;
+}
+#winner-message {
+  display: none;
+  font-size: 2.2rem;
+  margin: 24px auto 0 auto;
+  color: #f86624;
+  font-weight: bold;
+  text-shadow: 0 2px 12px #f9c80e88;
+  background: rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 18px 32px;
+  max-width: 400px;
+  animation: winnerPop 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes winnerPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  color: #fff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  padding: 32px 0 10px 0;
+  background: linear-gradient(90deg, #f9c80e 0%, #f86624 100%);
+  color: #222;
+  box-shadow: 0 2px 12px #0006;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #fff6;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+
+canvas#pong {
+  background: radial-gradient(circle at 60% 40%, #232526 60%, #111 100%);
+  border: 4px solid #f9c80e;
+  box-shadow: 0 0 40px #f9c80e55, 0 0 15px #000;
+  border-radius: 18px;
+  display: block;
+  transition: box-shadow 0.3s;
+  margin: 0 auto;
+}
+
+canvas#pong:focus {
+  box-shadow: 0 0 60px #f86624aa, 0 0 20px #000;
+}
+
+
+footer {
+  margin-top: 32px;
+  padding: 16px 0;
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  color: #f9c80e;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 -2px 12px #0006;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+canvas#pong {
+  background: #111;
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px #000;
+  display: block;
+}
